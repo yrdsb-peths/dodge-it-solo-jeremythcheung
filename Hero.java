@@ -5,18 +5,12 @@ public class Hero extends Actor
     boolean atTop = true;
     public void act()
     {
-        if(Greenfoot.mouseClicked(null))
-        {
-            atTop = !atTop;
-        }
-        
-        if(atTop)
-        {
+        if(Greenfoot.mouseClicked(null)){
             setLocation(100,100);
         }
-        else
-        {
-            setLocation(300,100);
+        
+        if(atTop){
+            setLocation(100,300);
         }
     }
 }
