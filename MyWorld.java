@@ -4,16 +4,21 @@ public class MyWorld extends World
 {
     public MyWorld()
     {
-        // Resolved: use goomba's 800x500 world with Jeremy's hero spawn
-        super(800, 500, 1);
+        super(600, 400, 1);
 
+        // Sky blue background
+        GreenfootImage bg = new GreenfootImage(600, 400);
+        bg.setColor(new Color(135, 206, 235));
+        bg.fill();
+        setBackground(bg);
+
+        // Player follows the mouse cursor
         Hero hero = new Hero();
-        addObject(hero, 50, 50);
+        addObject(hero, 300, 200);
 
-        Banana banana = new Banana();
-        addObject(banana, 600, 100);
-
-        Banana banana2 = new Banana();
-        addObject(banana2, 400, 200);
+        // Three bananas coming from the right at random speeds
+        addObject(new Banana(), 600, 100);
+        addObject(new Banana(), 600, 200);
+        addObject(new Banana(), 600, 300);
     }
 }

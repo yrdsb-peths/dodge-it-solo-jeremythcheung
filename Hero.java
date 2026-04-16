@@ -1,21 +1,24 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 public class Hero extends Actor
 {
-    boolean atTop = true;
+    public Hero()
+    {
+        setImage("man01.png");
+    }
+
     public void act()
     {
-        if(Greenfoot.mouseClicked(null)){
-            atTop = !atTop;
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if (mouse != null)
+        {
+            setLocation(mouse.getX(), mouse.getY());
         }
 
-        if(atTop)
+        if (isTouching(Banana.class))
         {
-            setLocation(100,100);
-        }
-        else
-        {
-            setLocation(100,300);
+            getWorld().addObject(new Gameover(), getWorld().getWidth() / 2, getWorld().getHeight() / 2);
+            Greenfoot.stop();
         }
     }
 }

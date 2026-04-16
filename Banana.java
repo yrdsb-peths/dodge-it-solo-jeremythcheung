@@ -1,32 +1,28 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 public class Banana extends Actor
 {
+    private int speed;
+
+    public Banana()
+    {
+        setImage("bananas.png");
+        speed = 3 + Greenfoot.getRandomNumber(5);
+    }
+
     public void act()
     {
-        move(-10);
+        setLocation(getX() - speed, getY());
 
-        if(getX() <= 0){
-            resetBanana();
-        }
-
-        if(isTouching(Hero.class))
+        if (getX() <= 0)
         {
-            Gameover gameover = new Gameover();
-            getWorld().addObject(gameover, 300, 200);
-            getWorld().removeObject(this);
+            reset();
         }
     }
 
-    public void resetBanana()
+    private void reset()
     {
-        int num = Greenfoot.getRandomNumber(2);
-        if(num == 0){
-            setLocation(600, 100);
-        }
-        else
-        {
-            setLocation(600, 300);
-        }
+        speed = 3 + Greenfoot.getRandomNumber(5);
+        setLocation(getWorld().getWidth(), Greenfoot.getRandomNumber(getWorld().getHeight()));
     }
 }
